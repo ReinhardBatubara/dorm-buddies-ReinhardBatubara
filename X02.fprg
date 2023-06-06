@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="acer"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-12 10:51:52 AM"/>
+        <attribute name="created" value="YWNlcjtMQVBUT1AtTzMzNlE5Qk87MjAyMi0xMi0xMjsxMDoxMjowOSBBTTsyNjky"/>
+        <attribute name="edited" value="YWNlcjtMQVBUT1AtTzMzNlE5Qk87MjAyMi0xMi0xMjsxMDo1MTo1MiBBTTsyODsyODU4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="buddies" type="String" array="True" size="4"/>
+            <call expression="default(buddies)"/>
+            <call expression="roombuddies(buddies)"/>
+        </body>
+    </function>
+    <function name="default" type="None" variable="">
+        <parameters>
+            <parameter name="buddies" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="value" type="Integer" array="False" size=""/>
+            <for variable="value" start="0" end="3" direction="inc" step="1">
+                <assign variable="buddies[value]" expression="&quot;&quot;"/>
+            </for>
+        </body>
+    </function>
+    <function name="output" type="None" variable="">
+        <parameters>
+            <parameter name="i" type="Integer" array="False"/>
+            <parameter name="buddies" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <for variable="j" start="0" end="i-1" direction="inc" step="1">
+                <output expression="buddies[j]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="roombuddies" type="None" variable="i">
+        <parameters>
+            <parameter name="buddies" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="y" type="Boolean" array="False" size=""/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <assign variable="y" expression="true"/>
+            <while expression="y=true&amp;&amp;i&lt;4">
+                <input variable="buddies[i]"/>
+                <if expression="buddies[i]!=&quot;---&quot;">
+                    <then>
+                        <assign variable="i" expression="i+1"/>
+                    </then>
+                    <else>
+                        <assign variable="y" expression="false"/>
+                    </else>
+                </if>
+            </while>
+            <call expression="output(i, buddies)"/>
+        </body>
+    </function>
+</flowgorithm>
